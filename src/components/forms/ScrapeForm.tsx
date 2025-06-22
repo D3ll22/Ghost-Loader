@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, Search, CheckCircle, XCircle } from 'lucide-react';
+import { Loader2, Search, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import { useApi } from '@/hooks/useApi';
 import { apiService, ScrapeResponse } from '@/services/api';
 import { toast } from 'sonner';
@@ -44,7 +44,7 @@ export const ScrapeForm = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <label htmlFor="username" className="text-sm font-medium text-gray-300">
-              Nome de Usuário
+              Nome de Usuário Instagram
             </label>
             <Input
               id="username"
@@ -87,37 +87,32 @@ export const ScrapeForm = () => {
           <div className="space-y-3">
             <div className="flex items-center gap-2 p-3 bg-[#00ff88]/10 border border-[#00ff88]/20 rounded-lg">
               <CheckCircle className="w-4 h-4 text-[#00ff88]" />
-              <span className="text-sm text-[#00ff88]">Análise iniciada!</span>
+              <span className="text-sm text-[#00ff88]">Análise concluída!</span>
             </div>
             
             <div className="space-y-2">
               <Badge className="ghost-badge-premium">
-                Status: {data.status}
+                Status: {data.status || 'Processado'}
               </Badge>
               
-              {data.task_id && (
-                <Badge variant="outline" className="text-gray-300 border-gray-600">
-                  Task ID: {data.task_id}
-                </Badge>
-              )}
-              
-              {data.progress !== undefined && (
-                <div className="space-y-1">
-                  <div className="flex justify-between text-xs text-gray-400">
-                    <span>Progresso</span>
-                    <span>{data.progress}%</span>
-                  </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2">
-                    <div 
-                      className="bg-[#00ff88] h-2 rounded-full transition-all duration-300"
-                      style={{ width: `${data.progress}%` }}
-                    />
-                  </div>
+              {data.result && (
+                <div className="p-3 bg-white/5 rounded-lg">
+                  <p className="text-sm text-gray-300">Resultado disponível</p>
+                  <pre className="text-xs text-gray-400 mt-2 overflow-auto">
+                    {JSON.stringify(data.result, null, 2)}
+                  </pre>
                 </div>
               )}
             </div>
           </div>
         )}
+
+        <div className="flex items-center gap-2 p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+          <AlertCircle className="w-4 h-4 text-blue-400" />
+          <span className="text-xs text-blue-400">
+            Conectado ao backend Flask na porta 5001
+          </span>
+        </div>
       </CardContent>
     </Card>
   );
