@@ -1,103 +1,203 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+/* Ghost Loader Premium Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Ghost Loader Premium Colors */
+    --ghost-primary: #00ff88;
+    --ghost-secondary: #8b5cf6;
+    --ghost-accent: #00d4ff;
+    --ghost-dark: #0a0a0a;
+    --ghost-dark-secondary: #111111;
+    --ghost-dark-tertiary: #1a1a1a;
+    --ghost-success: #10b981;
+    --ghost-warning: #f59e0b;
+    --ghost-danger: #ef4444;
+    --ghost-glass: rgba(255, 255, 255, 0.05);
+    --ghost-glass-strong: rgba(255, 255, 255, 0.1);
+    
+    /* Shadcn overrides for dark theme */
+    --background: 10 10% 4%;
+    --foreground: 0 0% 98%;
+    --card: 10 10% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 10 10% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 142 86% 50%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 262 83% 70%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 10 10% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 194 100% 50%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 10 10% 20%;
+    --input: 10 10% 15%;
+    --ring: 142 86% 50%;
+    --radius: 0.75rem;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+    background: linear-gradient(135deg, var(--ghost-dark) 0%, var(--ghost-dark-secondary) 50%, var(--ghost-dark-tertiary) 100%);
+    min-height: 100vh;
   }
+}
+
+@layer components {
+  /* Ghost Glassmorphism Components */
+  .ghost-glass {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  }
+
+  .ghost-glass-strong {
+    @apply backdrop-blur-2xl bg-white/10 border border-white/20;
+  }
+
+  /* Ghost Buttons */
+  .ghost-btn-primary {
+    @apply bg-gradient-to-r from-[#00ff88] to-[#00d4ff] text-black font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#00ff88]/25;
+  }
+
+  .ghost-btn-secondary {
+    @apply bg-gradient-to-r from-[#8b5cf6] to-[#6366f1] text-white font-semibold px-6 py-3 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#8b5cf6]/25;
+  }
+
+  .ghost-btn-outline {
+    @apply border-2 border-[#00ff88] text-[#00ff88] font-semibold px-6 py-3 rounded-xl hover:bg-[#00ff88] hover:text-black transition-all duration-300;
+  }
+
+  /* Ghost Cards */
+  .ghost-card {
+    @apply ghost-glass rounded-2xl p-6 hover:bg-white/10 transition-all duration-300;
+  }
+
+  .ghost-card-premium {
+    @apply ghost-glass-strong rounded-2xl p-8 hover:bg-white/15 transition-all duration-300 border-gradient;
+  }
+
+  /* Ghost Animations */
+  .ghost-fade-in {
+    animation: ghostFadeIn 0.6s ease-out forwards;
+  }
+
+  .ghost-slide-up {
+    animation: ghostSlideUp 0.8s ease-out forwards;
+  }
+
+  .ghost-scale-in {
+    animation: ghostScaleIn 0.5s ease-out forwards;
+  }
+
+  /* Ghost Text Effects */
+  .ghost-text-glow {
+    text-shadow: 0 0 20px currentColor;
+  }
+
+  .ghost-gradient-text {
+    @apply bg-gradient-to-r from-[#00ff88] to-[#00d4ff] bg-clip-text text-transparent;
+  }
+
+  /* Ghost Progress */
+  .ghost-progress {
+    @apply w-full h-2 bg-gray-800 rounded-full overflow-hidden;
+  }
+
+  .ghost-progress-bar {
+    @apply h-full bg-gradient-to-r from-[#00ff88] to-[#00d4ff] transition-all duration-500;
+  }
+
+  /* Ghost Badges */
+  .ghost-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#00ff88]/20 text-[#00ff88] border border-[#00ff88]/30;
+  }
+
+  .ghost-badge-premium {
+    @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-[#00ff88] to-[#00d4ff] text-black;
+  }
+}
+
+@layer utilities {
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(135deg, #00ff88, #00d4ff) 1;
+  }
+}
+
+/* Ghost Keyframes */
+@keyframes ghostFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ghostSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ghostScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ghostPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Ghost Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ghost-dark-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00ff88, #00d4ff);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #00d4ff, #00ff88);
 }

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'inter': ['Inter', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,6 +66,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				ghost: {
+					primary: '#00ff88',
+					secondary: '#8b5cf6',
+					accent: '#00d4ff',
+					dark: '#0a0a0a',
+					'dark-secondary': '#111111',
+					'dark-tertiary': '#1a1a1a',
 				}
 			},
 			borderRadius: {
@@ -84,11 +97,35 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'ghost-pulse': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.7'
+					}
+				},
+				'ghost-bounce': {
+					'0%, 100%': {
+						transform: 'translateY(-25%)',
+						animationTimingFunction: 'cubic-bezier(0.8,0,1,1)'
+					},
+					'50%': {
+						transform: 'translateY(0)',
+						animationTimingFunction: 'cubic-bezier(0,0,0.2,1)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'ghost-pulse': 'ghost-pulse 2s infinite',
+				'ghost-bounce': 'ghost-bounce 1s infinite'
+			},
+			backgroundImage: {
+				'ghost-gradient': 'linear-gradient(135deg, #00ff88, #00d4ff)',
+				'ghost-gradient-dark': 'linear-gradient(135deg, #0a0a0a, #111111)',
 			}
 		}
 	},
